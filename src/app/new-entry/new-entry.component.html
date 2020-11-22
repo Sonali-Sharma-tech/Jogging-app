@@ -1,0 +1,115 @@
+<h2 class="header ml-2">
+    Make a new Entry
+</h2>
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <form [formGroup]="NewForm">
+          
+              <!-- for small screens -->
+              <div *ngIf="mobile; else elseBlock">
+                <div class="col-12">
+                    <div class="col-6 form-group">
+                        <label class="control-label ml-4">Date :</label>
+                    </div>
+                
+                    <div class="col-6 form-group">
+
+                        <kendo-datepicker [(value)]="date"  media="sm" formControlName="date"></kendo-datepicker>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class=" col-6 form-group">
+                        <label class="control-label ml-4">Distance :</label>
+                    </div>
+                    <div class="col-5 form-group">
+                        <input type="text" class="" formControlName="distance"
+                            [ngClass]="{'is-invalid':submitted &&(f.distance.errors || f.distance.errors?.pattern) }">
+                        <div *ngIf="submitted && f.distance.errors" class="invalid-feedback">
+                            <div *ngIf="f.distance.errors.pattern">Distance should be number</div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-1">
+                        Km
+                    </div>
+                </div>
+                <div class=" row">
+                    <div class="col-6 form-group">
+                        <label class="control-label ml-4">Start Time :</label>
+                    </div>
+                    <div class="col-6 form-group">
+                        <kendo-timepicker [(value)]="ST" media="sm" formControlName="ST"></kendo-timepicker>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label class="control-label ml-4">End Time :</label>
+                    </div>
+                    <div class="col-6 form-group">
+                        <kendo-timepicker [(value)]="ED"  media="sm" formControlName="ED"></kendo-timepicker>
+                    </div>
+                </div>
+                
+            </div>
+
+          
+          
+            <!-- for medium screens-->
+            <ng-template #elseBlock>
+                <div class="row">
+                    <div class="col-3 form-group">
+                        <label class="control-label ml-4">Date :</label>
+                    </div>
+                    <div class="col-3 form-group">
+
+                        <kendo-datepicker [(value)]="date" formControlName="date"></kendo-datepicker>
+                    </div>
+
+
+
+
+
+                    <div class=" col-3 form-group">
+                        <label class="control-label ml-4">Distance :</label>
+                    </div>
+                    <div class="col-2 form-group">
+                        <input type="text" class="" formControlName="distance"
+                            [ngClass]="{'is-invalid':submitted &&(f.distance.errors || f.distance.errors?.pattern) }">
+                        <div *ngIf="submitted && f.distance.errors" class="invalid-feedback">
+                            <div *ngIf="f.distance.errors.pattern">Distance should be number</div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-1">
+                        Km
+                    </div>
+
+                </div>
+                <div class=" row">
+                    <div class="col-3 form-group">
+                        <label class="control-label ml-4">Start Time :</label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <kendo-timepicker [(value)]="ST" formControlName="ST"></kendo-timepicker>
+                    </div>
+                    <div class="col-3 form-group">
+                        <label class="control-label ml-4">End Time :</label>
+                    </div>
+                    <div class="col-3 form-group">
+                        <kendo-timepicker [(value)]="ED" formControlName="ED"></kendo-timepicker>
+                    </div>
+                </div>
+            </ng-template>
+          
+
+        </form>
+        <div class="center mt-4">
+            <button type="button" style="background-color: #ffe600;" class="btn" (click)="saveDetails()">Save</button>
+
+        </div>
+    </div>
+</div>

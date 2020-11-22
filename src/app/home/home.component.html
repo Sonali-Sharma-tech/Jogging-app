@@ -1,0 +1,37 @@
+<h2 class="header ml-2">Jogging Record</h2>
+
+<div class="container">
+  <div class="mt-4">
+
+    <div class="row">
+      <div class="col-3">Date</div>
+      <div class="col-3">Distance(in km)</div>
+      <div class="col-3">Start Time</div>
+      <div class="col-3">End Time</div>
+    </div>
+
+  </div>
+
+  <div *ngIf="found;else elseBlock">
+    <div class="row mt-4" *ngFor="let Entry of Entries">
+    
+
+        <div class="col-3">{{Entry.date | date: 'dd/MM/yyyy'}}</div>
+        <div class="col-3">{{Entry.distance}}</div>
+        <div class="col-3">{{Entry.starttime | date:'h:mm a '}}</div>
+        <div class="col-2">{{Entry.endtime | date:'h:mm a '}}</div>
+        <div class="col-1"><button class="deleteBtn" (click)="deleteEntry(Entry.distance)">x</button></div>
+      
+    </div>
+    
+      <div class="row">
+      <div class="col-6">Average Speed of past days : {{averageSpeed}} km/hr</div>
+      <div class="col-6"> Total Distance covered : {{total_distance}} Km </div>
+      </div>
+  
+    
+  </div>
+  <ng-template #elseBlock><span class="text">No Entries Found</span></ng-template>
+ 
+</div>
+
